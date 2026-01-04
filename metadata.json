@@ -1,0 +1,7 @@
+{
+  "name": "Coastal Breakdown Jeffreys Bay",
+  "description": "A premium, minimalist digital presence for Coastal Breakdown, a family-run towing and roadside assistance service in Jeffreys Bay, South Africa. Designed for luxury and reassurance.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
