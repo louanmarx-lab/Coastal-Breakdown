@@ -1,8 +1,8 @@
-
 import { GoogleGenAI } from "@google/genai";
 import { ChatMessage } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Always use the specified initialization pattern: const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
+const ai = new GoogleGenAI({apiKey: process.env.API_KEY});
 
 const SYSTEM_INSTRUCTION = `
 You are the "Coastal Breakdown Concierge," a helpful and exceptionally calm AI assistant for a premium towing, marine salvage, and haulage service in Jeffreys Bay, South Africa.
@@ -36,10 +36,13 @@ export async function getRoadsideAssistance(history: ChatMessage[]) {
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,
         temperature: 0.7,
+        // When maxOutputTokens is set for Gemini 3 series models, a thinkingBudget must be provided to reserve tokens for output
         maxOutputTokens: 300,
+        thinkingConfig: { thinkingBudget: 100 },
       }
     });
 
+    // Access the .text property directly instead of calling a method
     return response.text || "I apologize, I am having trouble connecting. Please use our emergency call button for immediate assistance.";
   } catch (error) {
     console.error("Gemini Error:", error);
