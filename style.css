@@ -182,9 +182,28 @@ article:hover {
   transition: var(--transition-flow);
 }
 
+.service-icon-box svg {
+  transition: var(--transition-flow);
+  display: block;
+}
+
 article:hover .service-icon-box {
   background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
   color: white;
+}
+
+article:hover .service-icon-box svg {
+  transform: scale(1.2);
+  animation: premium-icon-float 2.5s ease-in-out infinite;
+}
+
+@keyframes premium-icon-float {
+  0%, 100% {
+    transform: scale(1.2) translateY(0);
+  }
+  50% {
+    transform: scale(1.2) translateY(-6px);
+  }
 }
 
 /* Scrollbar */
